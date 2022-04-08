@@ -1,0 +1,41 @@
+<mat-card class="mat">
+<div class="chatcontrol">
+    <div class="form-item">
+     <mat-form-field  class="example-full-width" appearance="fill">
+        <mat-label *ngIf="!isUserSpeaking">type here...</mat-label>
+        <mat-label *ngIf="isUserSpeaking">Rec, move mouse🠗 to delete, release to sent</mat-label>
+        <input *ngIf="isUserSpeaking" [readonly]="true"  type="text"  matInput maxlength = "100" autocomplete="off" [(ngModel)]="voicetext"/>
+        <input *ngIf="!isUserSpeaking && deviceType !=  'xs'" [matKeyboard]=langSelect matKeyboard.size="50%" type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="message.content"/>
+        <input *ngIf="!isUserSpeaking && deviceType == 'xs'"  type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="message.content"/>
+        <!-- <input [matKeyboard]=langSelect matKeyboard.size="50%" type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="voicetext"/> -->
+      </mat-form-field>
+      <!-- <mat-form-field style="width:90px; margin:0 1ch 0 0" appearance="fill"> 
+        <mat-label>lang</mat-label>
+        <mat-select *ngIf="agentdetails == null"  (selectionChange)="setLanguage($event)" [(value)]="langSelect"
+        required placeholder="en">
+          <mat-option  value="en">English</mat-option>
+          <mat-option  value="hi">हिन्दी   </mat-option>
+          <mat-option  value="ml">മലയാളം</mat-option>
+        </mat-select>
+         <mat-select *ngIf="agentdetails != null"  (selectionChange)="setLanguage($event)" [(value)]="langSelect"
+        required placeholder="en">
+          <mat-option  *ngFor="let lang of agentdetails.agentlang"  [value]=lang.language_code>{{lang.language}}</mat-option>
+          <!-- <mat-option   *ngFor="let lang of agentdetails.agentlang" [value]=lang.language_code><p *ngIf="lang.language == 'Hindi'">हिन्दी<p></mat-option>
+          <mat-option   *ngFor="let lang of agentdetails.agentlang" [value]=lang.language_code><p *ngIf="lang.language == 'Malayalam'">മലയാളം</p></mat-option> -->
+        <!-- </mat-select>
+      </mat-form-field> --> 
+      <span><mat-icon  *ngIf="!isUserSpeaking" (mousedown)="startRecording()" style=" cursor:pointer;color:#4D4DCB">mic</mat-icon></span>
+       <span><mat-icon   *ngIf="isUserSpeaking" (mouseup)="sendVoiceMessage()"  (mouseleave) ="deleteRecording()" style=" cursor:pointer;color:red">mic</mat-icon></span> 
+      <!-- <span><mat-icon (click)="textinput.click()" style=" cursor:pointer;color:#4D4DCB">mic</mat-icon></span> -->
+    <!-- <button *ngIf="!isUserSpeaking && !textinput.value" mat-button class="btn-success" (click)="startRecording()" ><mat-icon style="color:white">mic</mat-icon></button> -->
+    <!-- <button *ngIf="!textinput.value" mat-button class="btn-success" (click)="startRecording()" ><mat-icon style="color:white">mic</mat-icon></button> -->
+      <!-- <button *ngIf="isUserSpeaking && !textinput.value"   mat-button class="btn-success" (click)="stopRecording()" ><mat-icon style="color:white">stop</mat-icon></button> -->
+      <button *ngIf="message.content &&!isUserSpeaking "  mat-button class="btn-success"  (click)="sendMessage()"><mat-icon style="color:white">send</mat-icon></button>
+      <button [disabled]="true"  *ngIf="!message.content || isUserSpeaking " mat-button class="btn-success"  ><mat-icon style="color:white">send</mat-icon></button>
+      <!-- <button   mat-button class="btn-success"  (click)="sendMessage()"><mat-icon style="color:white">send</mat-icon></button> -->
+    </div>
+  </div>
+  <p *ngIf="" class="logo-label"><i>Powered by</i><b> Oxylym</b></p>
+  </mat-card>
+
+

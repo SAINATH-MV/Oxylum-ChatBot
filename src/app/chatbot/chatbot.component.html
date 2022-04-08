@@ -1,0 +1,96 @@
+ <!-- <div class="chat-popup">
+    <form  class="form-container">
+      <div class="textarea-item">
+        <mat-form-field  appearance="fill">
+        <mat-label>Translator</mat-label>
+      <textarea  matInput placeholder="Ask the bot" required>
+    </textarea>
+</mat-form-field>
+    <mat-form-field  appearance="fill">
+        <mat-label>Enter</mat-label>
+        <input class="chat-input-item"  matInput placeholder="hi" value="hello">
+      </mat-form-field>
+      </div>
+    </form>
+  </div> -->
+  <!-- <div class="chatform">
+    <app-message-list [messages]="messages"></app-message-list>
+    <app-message-form [message]="message" [messages]="messages"></app-message-form>
+  </div> -->
+        <!-- <mat-grid-list [cols]="breakpoint" rowHeight="2:0.5" (window:resize)="onResize($event)">
+          <mat-grid-tile> -->
+            <div *ngIf="deviceType != 'xs'" class="example-card">
+              <mat-card class="chat-header">  
+             <mat-card-header> 
+              <div mat-card-avatar class="example-header-image"></div> 
+              <mat-card-title > <h4 mat-dialog-title>
+                 <!-- <mat-toolbar  class="task-header">  -->
+                    <span class="header-title">Dobby-Support Executive</span>
+                    <!-- <span *ngIf="agentdetails != null" style="margin-top: 4ch;" class="header-title">{{agentdetails.agentname}}</span> -->
+                 <!-- </mat-toolbar>  -->
+            </h4></mat-card-title>
+            <span class="fx-spacer"></span>
+            <!-- <span class="header-title">Language</span> -->
+            <span class="header-title">{{selectedlang}}</span>
+            <!-- <button  mat-button class="mat-close-button" (click)="dialogChatClose()"> -->
+              <!-- <mat-icon mat-button [matMenuTriggerFor]="menu" style="color:white;margin: 1px 1px 0 0;cursor:pointer">more_vert</mat-icon>
+              <mat-menu  #menu="matMenu">
+                <button [(value)]="langSelect" mat-menu-item [matMenuTriggerFor]="languages">Languages</button>
+              </mat-menu>
+              <mat-menu #languages="matMenu">
+                <button value="en" mat-menu-item>English</button>
+                <button value="hi" mat-menu-item>Hindi</button>
+              </mat-menu> -->
+              <!-- <mat-icon style="color: white;cursor: pointer;" class="mat-icon-close" (click)="dialogChatClose()">close</mat-icon> -->
+          <!-- </button>  -->
+             </mat-card-header> 
+             </mat-card>
+             <!-- <picture>
+                <source media='(min-width:0px)' srcset="/Bica-Admin-Panel/src/assets/user.jpg">
+                <img mat-card-image src="/Bica-Admin-Panel/src/assets/user.jpg" alt="Photo of a Shiba Inu">
+              </picture> --> 
+                <app-message-list (chiplang) = "setCurrentLang($event)" [langSelected] ="selectedlang"  [messages]="messages" [sessionId]="sessionId" ></app-message-list>
+                <app-message-form [deviceType]="deviceType" [langSelect] = "selectedlang" [message]="message" (recStarted) = "recodringStarted($event)" [messages]="messages"  [sessionId]="sessionId"></app-message-form>
+        
+          </div>
+          <div *ngIf="deviceType == 'xs'" class="example-card-xs">
+            <mat-card class="chat-header">  
+           <mat-card-header> 
+            <div mat-card-avatar class="example-header-image"></div> 
+            <mat-card-title > <h4 mat-dialog-title>
+               <!-- <mat-toolbar  class="task-header">  -->
+                  <span class="header-title">Dobby-Support Executive</span>
+                  <!-- <span *ngIf="agentdetails != null" style="margin-top: 4ch;" class="header-title">{{agentdetails.agentname}}</span> -->
+               <!-- </mat-toolbar>  -->
+          </h4></mat-card-title>
+          <span class="fx-spacer"></span>
+          <!-- <span class="header-title">Language</span> -->
+          <span class="header-title">{{selectedlang}}</span>
+          <!-- <button  mat-button class="mat-close-button" (click)="dialogChatClose()"> -->
+            <!-- <mat-icon mat-button [matMenuTriggerFor]="menu" style="color:white;margin: 1px 1px 0 0;cursor:pointer">more_vert</mat-icon>
+            <mat-menu  #menu="matMenu">
+              <button [(value)]="langSelect" mat-menu-item [matMenuTriggerFor]="languages">Languages</button>
+            </mat-menu>
+            <mat-menu #languages="matMenu">
+              <button value="en" mat-menu-item>English</button>
+              <button value="hi" mat-menu-item>Hindi</button>
+            </mat-menu> -->
+            <!-- <mat-icon style="color: white;cursor: pointer;" class="mat-icon-close" (click)="dialogChatClose()">close</mat-icon> -->
+        <!-- </button>  -->
+           </mat-card-header> 
+           </mat-card>
+           <!-- <picture>
+              <source media='(min-width:0px)' srcset="/Bica-Admin-Panel/src/assets/user.jpg">
+              <img mat-card-image src="/Bica-Admin-Panel/src/assets/user.jpg" alt="Photo of a Shiba Inu">
+            </picture> --> 
+              <app-message-list  [deviceType]="deviceType"(chiplang) = "setCurrentLang($event)" [langSelected] ="selectedlang"  [messages]="messages" [sessionId]="sessionId" ></app-message-list>
+              <app-message-form  [deviceType]="deviceType" [langSelect] = "selectedlang" [message]="message" (recStarted) = "recodringStarted($event)" [messages]="messages"  [sessionId]="sessionId"></app-message-form>
+      
+        </div>
+          
+          <!-- </mat-grid-tile>
+        </mat-grid-list>
+     -->
+        <!-- <div mat-card-avatar class="oxylium-logo"></div> -->
+    <!-- </div> -->
+  

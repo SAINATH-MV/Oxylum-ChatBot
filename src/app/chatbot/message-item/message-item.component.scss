@@ -1,0 +1,121 @@
+.message {
+    font-size: 1em;
+    font-style: bolder;
+    font-weight: 500;
+    color:white;
+    inline-size: 300px;
+    overflow-wrap: break-word;
+  }
+  .message-xs {
+    font-size: 1em;
+    font-style: bolder;
+    font-weight: 500;
+    color:white;
+    inline-size: 200px;
+    overflow-wrap: break-word;
+  }
+  .user-message{
+    font-size: 1em;
+    font-style: bolder;
+    font-weight: 500;
+    color:white;
+    inline-size: 300px;
+    overflow-wrap: break-word;
+  }
+
+  .user-message-xs{
+    font-size: 1em;
+    font-style: bolder;
+    font-weight: 500;
+    color:white;
+    inline-size: 250px;
+    overflow-wrap: break-word;
+  }
+
+  // .timeform {
+  //   float: left;
+  //   width: 100%;
+  //   i {
+  //     margin-left: 20px;
+  //   }
+  //   .timestamp{
+  //     font-size: 0.6em;
+  //   }
+  // }
+  
+  .avatar{
+    width: 50px;
+    margin-right: 20px;
+  }
+
+  .bot-item-matcard{
+      max-width: 400px;
+      //max-height: 500px;
+      margin-bottom: 10px;
+      background-color: #4D4DCB;
+      margin-right:50px;
+      // background: linear-gradient(168deg, #4D4DCB 80%,  #4D4DCB 80%,  #4D4DCB 80%, 
+      // transparent 95%);
+  }
+  .bot-message-item{
+    max-width: 400px;
+      display: flex;
+      flex-direction: row;
+  }
+  .bot-message-item-xs{
+      max-width: 325px;
+      display: flex;
+      flex-direction: row;
+     
+  }
+
+  .bot-header-item{
+    background-image: url("/assets/Letter_B_indigo.jpg");
+    background-size: cover; 
+    margin-right: 1ch;
+  }
+
+  .user-header-item{
+    background-image: url("/assets/C_Pink.jpg");
+    background-size: cover; 
+    margin-right: 1ch;
+  }
+
+  .user-message-item{
+    max-width:fit-content;
+    display: flex;
+    flex-direction: row;
+    float:right;
+    
+  //  width:auto;
+  }
+  .user-message-item-xs{
+    max-width:fit-content;
+    float:right;
+    
+  //  width:auto;
+  }
+
+.user-item-matcard{
+ max-width:800px;
+    //max-height: 500px;
+    margin-bottom: 10px;
+    background-color: #ea5589;
+    margin-right:5px;  
+    float:right;
+    // background: linear-gradient(168deg, #ea5589 80%,  #ea5589 80%,  #ea5589 80%, 
+    // transparent 100%);
+   
+}
+
+.user-item-matcard-xs{
+  max-width:800px;
+     //max-height: 500px;
+     margin-bottom: 10px;
+     background-color: #ea5589;
+     margin-left:5px;  
+     float:right;
+     // background: linear-gradient(168deg, #ea5589 80%,  #ea5589 80%,  #ea5589 80%, 
+     // transparent 100%);
+    
+ }

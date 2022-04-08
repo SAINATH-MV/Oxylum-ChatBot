@@ -1,0 +1,15 @@
+.chatlist{
+  //width:fit-content;
+    height: 472px;
+    overflow-y: scroll;
+  }
+
+  ul {
+    list-style-type: none;
+    padding-inline-start:20px;
+}
+
+.oxylium-logo{
+  background-image: url("/assets/bicabotImage.png");
+  background-size:cover;
+}

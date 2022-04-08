@@ -1,0 +1,6 @@
+<div class="chatlist" #chatlist>
+  <ul class="list-group">
+    <app-message-item [deviceType]="deviceType" [langSelected] ="langSelected" (chiplang) = "setCurrentLang($event)"  [messages] = "messages" *ngFor="let msg of messages" [message]="msg" [sessionId] ="sessionId" ></app-message-item>
+    <!-- <div mat-card-avatar class="oxylium-logo"></div>  -->
+  </ul>
+</div>

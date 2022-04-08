@@ -1,0 +1,90 @@
+<li class="list-group-item">
+  <div *ngIf="message.type=='bot'&& deviceType != 'xs'" class="bot-message-item">
+    <div mat-card-avatar class="bot-header-item"></div>
+    <div>
+      <mat-card *ngIf="message.content" class="bot-item-matcard">
+        <div  *ngFor="let messages of message.content " class="message">
+          {{ messages }}
+        </div>
+        <!-- <div class="timeform">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <span class="timestamp"
+            >at {{ message.timestamp | date: "dd/MM/yyyy" }}</span
+          >
+        </div> -->
+      </mat-card>
+      <mat-chip-list>
+          <mat-chip
+              *ngFor="let chipset of message.chipset"
+              [selected]="chipset"
+              [value]="chipset"
+              (click) = "onChipsetClick(chipset)"
+             >
+            {{chipset}}
+          </mat-chip>
+        </mat-chip-list>
+        <br>
+    </div>
+  </div>
+  <div *ngIf="message.type=='bot'&& deviceType == 'xs'" class="bot-message-item-xs">
+    <div mat-card-avatar class="bot-header-item"></div>
+    <div style="width:300px;">
+      <mat-card *ngIf="message.content" class="bot-item-matcard">
+        <div  *ngFor="let messages of message.content " class="message-xs">
+          {{ messages }}
+        </div>
+        <!-- <div class="timeform">
+          <i class="fa fa-clock-o" aria-hidden="true"></i>
+          <span class="timestamp"
+            >at {{ message.timestamp | date: "dd/MM/yyyy" }}</span
+          >
+        </div> -->
+      </mat-card>
+      <mat-chip-list>
+          <mat-chip
+              style="margin-top: 0.5ch;"
+              *ngFor="let chipset of message.chipset"
+              [selected]="chipset"
+              [value]="chipset"
+              (click) = "onChipsetClick(chipset)"
+             >
+             &nbsp;
+            {{chipset}}
+            &nbsp;
+          </mat-chip>
+        </mat-chip-list>
+        <br>
+    </div>
+  </div>
+  <div style="clear:both"></div>
+    <div *ngIf="message.type=='user'&& deviceType != 'xs'" class="user-message-item">
+          <mat-card *ngIf="message.content" class="user-item-matcard">
+            <div class="user-message">
+              <p>{{ message.content }}</p>
+            </div>
+            <!-- <div class="timeform">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <span class="timestamp"
+                >at {{ message.timestamp | date: "dd/MM/yyyy" }}</span
+              >
+            </div> -->
+          </mat-card>
+          <div mat-card-avatar class="user-header-item"></div>
+      </div>
+      <div *ngIf="message.type=='user'&& deviceType == 'xs'" class="user-message-item-xs">
+        <div style="float:right ;margin-left: 0.5ch;" mat-card-avatar class="user-header-item"></div>
+        <mat-card *ngIf="message.content" class="user-item-matcard-xs">
+          <div class="user-message-xs">
+            <p>{{ message.content }}</p>
+          </div>
+          <!-- <div class="timeform">
+            <i class="fa fa-clock-o" aria-hidden="true"></i>
+            <span class="timestamp"
+              >at {{ message.timestamp | date: "dd/MM/yyyy" }}</span
+            >
+          </div> -->
+        </mat-card>
+        
+    </div>
+  <div style="clear:both"></div>
+</li>

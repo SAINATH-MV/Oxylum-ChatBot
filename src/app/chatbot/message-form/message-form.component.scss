@@ -1,0 +1,61 @@
+.chatcontrol{
+    // float: left;
+     width: 100%;
+  
+    .chatinput{
+      width: 80%;
+      float: left;
+      border-radius: 0;
+    }
+  
+    .sendbtn{
+      width: 20%;
+      float: left;
+      border-radius: 0;
+      text-transform: uppercase;
+    }
+  }
+
+  .form-item{
+    display:flex;
+    flex-direction: row;
+    flex:1;
+  }
+
+  .example-full-width{
+      flex:1;
+  }
+  
+  .btn-success{
+    //color:white;
+    background-color:#4D4DCB;
+    margin-bottom:2.3ch;
+    margin-right:5px;
+    display:block;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+  //  margin-left: 1ch;
+   // border: 1px solid #4D4DCB;
+  }
+  .btn-success:disabled,
+  .btn-success[disabled]{
+  background-color: #e7e5e5;
+  color: #ecebeb;
+}
+
+  // .btn-recording{
+
+  // }
+
+  
+
+
+.logo-label{
+  font-size:smaller;
+    // font-style: italic;
+    font-weight:1;
+    color:#b8b8b8;
+    margin-left: 27ch;
+   
+}
