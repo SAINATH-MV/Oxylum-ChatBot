@@ -48,9 +48,6 @@
 
   // }
 
-  
-
-
 .logo-label{
   font-size:smaller;
     // font-style: italic;
@@ -58,4 +55,15 @@
     color:#b8b8b8;
     margin-left: 27ch;
    
+}
+
+.total-form-mat{
+  border: 55px solid #000;
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+   border: #000 !important;
+   filter:  /* the more shadow you add the thicker the border will be */
+   drop-shadow(0px 0px 1px #b3b2b2) 
+  // drop-shadow(0px 0px 1px #DF5556) 
+ 
 }

@@ -10,7 +10,7 @@ import { MessageItemComponent } from '../message-item/message-item.component';
 })
 
 export class MessageListComponent implements OnInit, AfterViewInit {
-  
+
   @Input('messages')
   messages!: Message[];
   @Input('sessionId') sessionId : any;
@@ -25,7 +25,8 @@ export class MessageListComponent implements OnInit, AfterViewInit {
   chatItems!: QueryList<MessageItemComponent>;
   @Output() chiplang: EventEmitter<string> = new EventEmitter<string>();
   @Input('deviceType') deviceType: any;
-
+  @Input('voiceAssistState')voiceAssistState!: boolean;
+  
   constructor() { }
 
   ngAfterViewInit() {
@@ -49,6 +50,9 @@ export class MessageListComponent implements OnInit, AfterViewInit {
     this.chiplang.emit(this.langSelected);
       }
     
+  setVoiceAssist(currentstate:boolean){
+    
+  }
   ngOnInit(): void {
   }
 

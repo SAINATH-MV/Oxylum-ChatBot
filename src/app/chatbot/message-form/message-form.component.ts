@@ -1,13 +1,12 @@
 import { Component, Input, OnInit,OnDestroy, Output} from '@angular/core';
-
 import { Message } from  'src/app/chatbot/message';
-
 import {VoicerecognisionService} from "../voicerecognision.service"
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { of, Subscription } from 'rxjs';
 import { first, take } from 'rxjs/operators';
 import { EventEmitter } from '@angular/core';
 import { ChatbotService } from '../chatbot-service';
+import { AstMemoryEfficientTransformer } from '@angular/compiler';
 
 @Component({
   selector: 'app-message-form',
@@ -31,6 +30,8 @@ export class MessageFormComponent implements OnInit {
   voiceSub!: Subscription;
   @Input('langSelect') langSelect:string='';
   @Input('deviceType') deviceType: any;
+  @Input('voiceAssistState') voiceAssistState!: boolean;
+  myTimeout: any;
   constructor(private fb: FormBuilder,
    private voiceRecognition: VoicerecognisionService,private chatbotService:ChatbotService) {
       this.searchForm = this.fb.group({
@@ -89,7 +90,12 @@ export class MessageFormComponent implements OnInit {
     //   this.voiceRecognition.setlanguage(this.langSelect);
     //  // this.langChanged.emit(event.value);
     // }
-    
+    myTimer(){
+      window.speechSynthesis.pause();
+      window.speechSynthesis.resume();
+      this.myTimeout = setTimeout(this.myTimer, 10000);
+    }
+
     public sendVoiceMessage(): void {
     //  this.voiceRecognition.setlanguage(this.langSelect);
       this.stopRecording();
@@ -104,10 +110,10 @@ export class MessageFormComponent implements OnInit {
         // }
        // console.log("hiiiiiiiiiiiiiiiiiii");
          this.data = {
-          agent_id:'f1d514f2-c895-4964-b3b1-bc601be2cf28',
+          agent_id:'fba268e2-e8da-4493-b3cc-f0409aab03ab',
           session_id:this.sessionId,
           text: this.voicetext,
-          env_id:'273fad2e-4be2-439f-9573-9da9f9fcc7c8',
+          env_id:'-',
           translate_code:this.langSelect,
           session_end:false
         }
@@ -128,22 +134,34 @@ export class MessageFormComponent implements OnInit {
     //  this.message.timestamp = new Date();
     console.log("messagesss",this.message);
       this.isFetching= true;
-      let splitstrings: string[]
+      let splitstrings: string[];
       this.chatbotService.sentAgentMessage(this.data).subscribe(responseData =>{
+        if(this.voiceAssistState === true ){
         if ('speechSynthesis' in window) {
-          var msg = new SpeechSynthesisUtterance();
-          msg.text = responseData.body?.fullFillmentText;
+          window.speechSynthesis.cancel();
+          this.myTimeout = setTimeout(this.myTimer, 10000);
+         // var msg = new SpeechSynthesisUtterance();
+         // voices = window.speechSynthesis.getVoices();
+         // msg.text = responseData.body?.fullFillmentText;
+          var toSpeak = responseData.body?.fullFillmentText;
+          var msg = new SpeechSynthesisUtterance(toSpeak);
           msg.lang = this.langSelect;
-          // var voices = window.speechSynthesis.getVoices();
+           //var voices = window.speechSynthesis.getVoices();
           // msg.voice = voices[10]; 
           msg.volume = 1; // From 0 to 1
           msg.rate = 1; // From 0.1 to 10
           // msg.pitch = 2; // From 0 to 2
+          msg.rate = 1; // From 0.1 to 10
+          // msg.voice = voices[10];
+          if(msg.onend){
+            clearTimeout(this.myTimeout);
+          }
           window.speechSynthesis.speak(msg);
          } else{
            // Speech Synthesis Not Supported 😣
            alert("Sorry, your browser doesn't support text to speech!");
          }
+        }
         if(responseData.body?.fullFillmentText===""){
           if(this.langSelect=="en"){
             let response = "Please enter recognisable input"
@@ -187,10 +205,10 @@ export class MessageFormComponent implements OnInit {
     
       console.log("hiiiiiiiiiiiiiiiiiii");
        this.data = {
-        agent_id:'f1d514f2-c895-4964-b3b1-bc601be2cf28',
+        agent_id:'fba268e2-e8da-4493-b3cc-f0409aab03ab',
         session_id:this.sessionId,
         text: this.message.content,
-        env_id:"273fad2e-4be2-439f-9573-9da9f9fcc7c8",
+        env_id:"-",
         translate_code:this.langSelect,
         session_end:false
       }
@@ -210,24 +228,43 @@ export class MessageFormComponent implements OnInit {
   //  this.message.timestamp = new Date();
   console.log("messagesss",this.message);
     this.isFetching= true;
-    let splitstrings: string[]
+    let splitstrings: string[];
     if(this.message.content.length !== 0){
     this.chatbotService.sentAgentMessage(this.data).subscribe(responseData =>{
       console.log("Selected language:",this.langSelect);
+      if(this.voiceAssistState === true){
       if ('speechSynthesis' in window) {
-        var msg = new SpeechSynthesisUtterance();
-        msg.text = responseData.body?.fullFillmentText;
+        window.speechSynthesis.cancel();
+        this.myTimeout = setTimeout(this.myTimer, 10000);
+        //var msg = new SpeechSynthesisUtterance();
+       // msg.text = responseData.body?.fullFillmentText;
+       var toSpeak = responseData.body?.fullFillmentText;
+       var msg = new SpeechSynthesisUtterance(toSpeak);
         msg.lang = this.langSelect;
+        var voices = window.speechSynthesis.getVoices();
         // var voices = window.speechSynthesis.getVoices();
         // msg.voice = voices[10]; 
+       // msg.voice = voices[10];
         msg.volume = 1; // From 0 to 1
         msg.rate = 1; // From 0.1 to 10
-        // msg.pitch = 2; // From 0 to 2
-        window.speechSynthesis.speak(msg);
+        if(msg.onend){
+          clearTimeout(this.myTimeout);
+        }
+         window.speechSynthesis.speak(msg);
+        // // msg.pitch = 2; // From 0 to 2
+        // let speechInerval = setInterval(() => {
+        //   console.log(speechSynthesis.speaking);
+        //   if (!speechSynthesis.speaking) {
+        //     clearInterval(speechInerval);
+        //   } else {
+        //     speechSynthesis.resume();
+        //   }
+        // }, 14000);
        }else{
          // Speech Synthesis Not Supported 😣
          alert("Sorry, your browser doesn't support text to speech!");
        }
+      }
       if(responseData.body?.fullFillmentText===""){
       let response = "Please enter recognisable input"
      splitstrings = response.toString().split("\n");
@@ -246,3 +283,7 @@ export class MessageFormComponent implements OnInit {
   }
   }
 }
+function myTimeout(myTimeout: any) {
+  throw new Error('Function not implemented.');
+}
+

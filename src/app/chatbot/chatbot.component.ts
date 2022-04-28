@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostListener, Inject, Input, OnInit, Output } from '@angular/core';
 import { MessageListComponent} from './message-list/message-list.component';
 import { MessageFormComponent } from './message-form/message-form.component';
 import { MessageItemComponent } from './message-item/message-item.component';
@@ -30,6 +30,8 @@ export class ChatbotComponent implements OnInit {
   isRecording!: boolean;
   breakpoint!: number;
   @Input('deviceType') deviceType:any;
+  //@Output() voiceassist: EventEmitter<boolean> = new EventEmitter<boolean>();
+  voiceAssistState: boolean = true;
 
   constructor(private voiceRecognition: VoicerecognisionService,
      private chatbotService:ChatbotService){
@@ -55,6 +57,11 @@ export class ChatbotComponent implements OnInit {
       this.userInactive.next(undefined)
        this.dialogChatClose()
     },180000);
+  }
+
+  onVoiceassistClick(){
+    window.speechSynthesis.cancel();
+    this.voiceAssistState = !this.voiceAssistState;
   }
 
   @HostListener('document:keypress', ['$event'])
@@ -98,10 +105,10 @@ export class ChatbotComponent implements OnInit {
 
   dialogChatClose(){
       this.messagedata = {
-       agent_id:"f1d514f2-c895-4964-b3b1-bc601be2cf28",
+       agent_id:"fba268e2-e8da-4493-b3cc-f0409aab03ab",
        session_id:this.sessionId,
        text: this.message.content,
-       env_id:"273fad2e-4be2-439f-9573-9da9f9fcc7c8",
+       env_id:"-",
        translate_code:this.selectedlang,
        session_end:false
       }

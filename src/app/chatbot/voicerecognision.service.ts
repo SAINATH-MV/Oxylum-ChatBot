@@ -21,7 +21,6 @@ export class VoicerecognisionService {
    * @description Function to return observable so voice sample text can be send to input.
    */
   speechInput() {
-
     return this.voiceToTextSubject.asObservable();
   }
 

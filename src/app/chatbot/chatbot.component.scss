@@ -107,7 +107,12 @@
     bottom: 0px;
    margin:0 7ch 33ch 0ch;
    border-radius: 30px !important;
-    
+   border: #000 !important;
+   filter:  /* the more shadow you add the thicker the border will be */
+ drop-shadow(0px 0px 1px #94949b)
+ drop-shadow(0px 0px 1px #bbbbbd) 
+ 
+
   }
   
   .example-header-image {
@@ -124,7 +129,12 @@
   //   background-color: #4D4DCB;
   // }
  .chat-header{
-  background-color: #4D4DCB;
+  background-color:white;
+  border: 55px solid #000;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+  border: #000 !important;
+  
   // background: linear-gradient(168deg, #4D4DCB 80%,  #4D4DCB 80%,  #4D4DCB 80%, 
   //     transparent 100%);
  }
@@ -132,7 +142,7 @@
     font-size: 1em;
     font-style: bolder;
     font-weight: 500;
-    color:white;
+    color:#DF5556;
   // background-color: #4D4DCB;
   //  padding-top: 2ch;
   //  padding-bottom: 5ch;
