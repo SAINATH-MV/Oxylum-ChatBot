@@ -2,11 +2,11 @@
 <div class="chatcontrol">
     <div class="form-item">
      <mat-form-field  class="example-full-width" appearance="fill">
-        <mat-label *ngIf="!isUserSpeaking">type here...</mat-label>
+        <mat-label *ngIf="!isUserSpeaking">Type something...</mat-label>
         <mat-label *ngIf="isUserSpeaking">Rec, move mouse🠗 to delete, release to sent</mat-label>
-        <input *ngIf="isUserSpeaking" [readonly]="true"  type="text"  matInput maxlength = "100" autocomplete="off" [(ngModel)]="voicetext"/>
-        <input *ngIf="!isUserSpeaking && deviceType !=  'xs'" [matKeyboard]=langSelect matKeyboard.size="50%" type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="message.content"/>
-        <input *ngIf="!isUserSpeaking && deviceType == 'xs'"  type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="message.content"/>
+        <input class="input-item"  *ngIf="isUserSpeaking" [readonly]="true"  type="text"  matInput maxlength = "100" autocomplete="off" [(ngModel)]="voicetext"/>
+        <input class="input-item"  *ngIf="!isUserSpeaking && deviceType !=  'xs'" [matKeyboard]=langSelect matKeyboard.size="50%" type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="message.content"/>
+        <input class="input-item"  *ngIf="!isUserSpeaking && deviceType == 'xs'"  type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="message.content"/>
         <!-- <input [matKeyboard]=langSelect matKeyboard.size="50%" type="text" #textinput matInput maxlength = "100" autocomplete="off" [(ngModel)]="voicetext"/> -->
       </mat-form-field>
       <!-- <mat-form-field style="width:90px; margin:0 1ch 0 0" appearance="fill"> 
@@ -24,8 +24,8 @@
           <mat-option   *ngFor="let lang of agentdetails.agentlang" [value]=lang.language_code><p *ngIf="lang.language == 'Malayalam'">മലയാളം</p></mat-option> -->
         <!-- </mat-select>
       </mat-form-field> --> 
-      <span><mat-icon  *ngIf="!isUserSpeaking" (mousedown)="startRecording()" style=" cursor:pointer;color:#4D4DCB">mic</mat-icon></span>
-       <span><mat-icon   *ngIf="isUserSpeaking" (mouseup)="sendVoiceMessage()"  (mouseleave) ="deleteRecording()" style=" cursor:pointer;color:red">mic</mat-icon></span> 
+     <button *ngIf="!isUserSpeaking" (mousedown)="startRecording()" class="btn-record"><mat-icon   style=" cursor:pointer;color:black">mic</mat-icon></button>
+      <button style="background-color:#DF5556" *ngIf="isUserSpeaking" (mouseup)="sendVoiceMessage()" class="btn-record" (mouseleave) ="deleteRecording()"><mat-icon style=" cursor:pointer;color:white">mic</mat-icon></button> 
       <!-- <span><mat-icon (click)="textinput.click()" style=" cursor:pointer;color:#4D4DCB">mic</mat-icon></span> -->
     <!-- <button *ngIf="!isUserSpeaking && !textinput.value" mat-button class="btn-success" (click)="startRecording()" ><mat-icon style="color:white">mic</mat-icon></button> -->
     <!-- <button *ngIf="!textinput.value" mat-button class="btn-success" (click)="startRecording()" ><mat-icon style="color:white">mic</mat-icon></button> -->

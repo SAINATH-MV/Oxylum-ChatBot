@@ -2,7 +2,7 @@
   <div *ngIf="message.type=='bot'&& deviceType != 'xs'" class="bot-message-item">
     <div mat-card-avatar class="bot-header-item"></div>
     <div>
-      <mat-card *ngIf="message.content" class="bot-item-matcard p-left top" style="--h:5px">
+      <mat-card *ngIf="message.content" class="bot-item-matcard p-left " style="--h:8px">
         <div  *ngFor="let messages of message.content " class="message">
           {{ messages }}
         <!-- <mat-icon style="float:right;cursor:pointer" *ngIf="voiceAssistState == true" (click)="onVoiceassistClick()">volume_down</mat-icon>
@@ -16,18 +16,29 @@
         </div> -->
       </mat-card>
       <mat-chip-list>
-        <div style="margin-left: 2ch;">
+        <!-- <div *ngIf="langSelected" style="margin-left: 2ch;">
           <mat-chip
                class="chipset-item"  
-               style="background-color: #F9E1E1; color:black"    
+               style="background-color: #e7e5e5; color:#ffffff"    
               *ngFor="let chipset of message.chipset"
               [selected]="chipset"
               [value]="chipset"
-              (click) = "onChipsetClick(chipset)"
              >
             {{chipset}}
           </mat-chip>
-          </div>
+          </div> -->
+          <div *ngIf="!langSelected" style="margin-left: 2ch;">
+            <mat-chip
+                 class="chipset-item"  
+                 style="background-color: #F9E1E1; color:black"    
+                *ngFor="let chipset of message.chipset"
+                [selected]="chipset"
+                [value]="chipset"
+                (click) = "onChipsetClick(chipset)"
+               >
+              {{chipset}}
+            </mat-chip>
+            </div>
         </mat-chip-list>
         <br>
     </div>
@@ -35,7 +46,7 @@
   <div *ngIf="message.type=='bot'&& deviceType == 'xs'" class="bot-message-item-xs">
     <div mat-card-avatar class="bot-header-item"></div>
     <div style="width:300px;">
-      <mat-card *ngIf="message.content" class="bot-item-matcard p-left top ">
+      <mat-card *ngIf="message.content" class="bot-item-matcard p-left" style="--h:8px" >
         <div  *ngFor="let messages of message.content " class="message-xs">
           {{ messages }}
         </div>
@@ -67,7 +78,7 @@
   </div>
   <div style="clear:both"></div>
     <div *ngIf="message.type=='user'&& deviceType != 'xs'" class="user-message-item">
-          <mat-card *ngIf="message.content" class="user-item-matcard p-right top " style="--w:10px;">
+          <mat-card *ngIf="message.content" class="user-item-matcard p-right" style="--w:10px;--h:10px">
             <div class="user-message">
               <p>{{ message.content }}</p>
             </div>
@@ -82,7 +93,7 @@
       </div>
       <div *ngIf="message.type=='user'&& deviceType == 'xs'" class="user-message-item-xs">
         <div style="float:right ;margin-left: 0.5ch;" mat-card-avatar class="user-header-item"></div>
-        <mat-card *ngIf="message.content" class="user-item-matcard-xs p-right top " style="--w:10px">
+        <mat-card *ngIf="message.content" class="user-item-matcard-xs p-right" style="--w:10px;--h:10px">
           <div class="user-message-xs">
             <p>{{ message.content }}</p>
           </div>
@@ -93,7 +104,6 @@
             >
           </div> -->
         </mat-card>
-        
     </div>
   <div style="clear:both"></div>
 </li>

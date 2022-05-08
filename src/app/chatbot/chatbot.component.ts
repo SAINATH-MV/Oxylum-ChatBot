@@ -39,7 +39,7 @@ export class ChatbotComponent implements OnInit {
    let stringarray:string = "Hi I am Bot"
    if(this.selectedlang === "" ||'en'){
     this.messages = [
-      new Message('bot',['Hi, please select a language'],['English','Hindi','Malayalam'],'assets/bot.jpg')
+      new Message('bot',['Hello, Please select a language'],['English','हिन्दी','മലയാളം'],'assets/bot.jpg')
     ];   
    }
   //  if(this.selectedlang === 'hi'){

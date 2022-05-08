@@ -86,7 +86,6 @@
     // width: 600px;
     // margin: 0 auto;
     // margin-top: 50px;
-    
     margin-right:87ch;
     margin-bottom:10ch;
   }
@@ -99,9 +98,11 @@
   .example-card {
     max-width:500px;
     min-width:500px;
-    height: 595px;
-    width:300px;
-    background-color:white;
+    // height: 595px;
+    // width:300px;
+    height:617px;
+    width:500px;
+    background-color:#FCF0F0;
     position:fixed; 
     right: 0px;
     bottom: 0px;
@@ -109,22 +110,21 @@
    border-radius: 30px !important;
    border: #000 !important;
    filter:  /* the more shadow you add the thicker the border will be */
- drop-shadow(0px 0px 1px #94949b)
- drop-shadow(0px 0px 1px #bbbbbd) 
- 
-
+    drop-shadow(0px 0px 1px #94949b)
+    drop-shadow(0px 0px 1px #bbbbbd) 
   }
   
   .example-header-image {
-     background-image: url("/assets/bicabotImage.png");
+    background-image: url("/assets/Oxylym_logo.png");
     background-size: cover;
-    //margin-bottom: 2px;
+    
+  //  margin-top: 2px;
   }
 
-  .oxylium-logo{
-    background-image: url("/assets/bicabotImage.png");
-    background-size:cover;
-  }
+  // .oxylium-logo{
+  //   background-image: url("/assets/bicabotImage.png");
+  //   background-size:cover;
+  // }
   // mat-card-header{
   //   background-color: #4D4DCB;
   // }
@@ -134,7 +134,6 @@
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
   border: #000 !important;
-  
   // background: linear-gradient(168deg, #4D4DCB 80%,  #4D4DCB 80%,  #4D4DCB 80%, 
   //     transparent 100%);
  }
@@ -143,10 +142,12 @@
     font-style: bolder;
     font-weight: 500;
     color:#DF5556;
+    margin-top:2ch;
+    margin-right:0.2ch;
   // background-color: #4D4DCB;
   //  padding-top: 2ch;
   //  padding-bottom: 5ch;
-  //  padding-left: 2ch;
+ //   padding-left: 2ch;
   //  padding-right: 2ch;
   }
 //   .task-header {

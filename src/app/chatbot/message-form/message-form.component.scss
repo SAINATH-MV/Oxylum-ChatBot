@@ -16,6 +16,10 @@
     }
   }
 
+  .input-item{
+    
+  }
+
   .form-item{
     display:flex;
     flex-direction: row;
@@ -34,7 +38,10 @@
     display:block;
     height: 50px;
     width: 50px;
-    border-radius: 50%;
+    border-radius:50%;
+    filter:  /* the more shadow you add the thicker the border will be */
+    drop-shadow(0px 0px 1px #4D4DCB)
+    drop-shadow(0px 0px 1px #4D4DCB)
   //  margin-left: 1ch;
    // border: 1px solid #4D4DCB;
   }
@@ -43,18 +50,24 @@
   background-color: #e7e5e5;
   color: #ecebeb;
 }
-
+.btn-record{
+  margin-bottom:2.3ch;
+  margin-right:5px;
+  margin-left:5px;
+  height: 50px;
+  width: 50px;
+  border-radius:60%;
+ border:none;
+}
   // .btn-recording{
 
   // }
-
 .logo-label{
   font-size:smaller;
     // font-style: italic;
     font-weight:1;
     color:#b8b8b8;
     margin-left: 27ch;
-   
 }
 
 .total-form-mat{
@@ -65,5 +78,5 @@
    filter:  /* the more shadow you add the thicker the border will be */
    drop-shadow(0px 0px 1px #b3b2b2) 
   // drop-shadow(0px 0px 1px #DF5556) 
- 
 }
+

@@ -9,7 +9,6 @@ import { ChatbotService } from '../chatbot-service';
   styleUrls: ['./message-item.component.scss']
 })
 export class MessageItemComponent implements OnInit {
-
   @Input('messages')
   messages!: Message[];
   @Input('message')
@@ -43,10 +42,11 @@ export class MessageItemComponent implements OnInit {
   // }
 
   onChipsetClick(selectedChip:any){
-      if(selectedChip === 'Malayalam')
+    
+      if(selectedChip === 'മലയാളം')
              this.chiplang.emit('ml');
 
-     else if(selectedChip === 'Hindi')
+     else if(selectedChip === 'हिन्दी')
               this.chiplang.emit('hi');
       
       else if(selectedChip === 'English')
