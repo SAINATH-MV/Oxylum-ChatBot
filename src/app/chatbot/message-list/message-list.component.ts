@@ -2,7 +2,6 @@ import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnInit, Outp
 import { Message } from  'src/app/chatbot/message';
 import { MessageItemComponent } from '../message-item/message-item.component';
 
-
 @Component({
   selector: 'app-message-list',
   templateUrl: './message-list.component.html',
@@ -10,7 +9,6 @@ import { MessageItemComponent } from '../message-item/message-item.component';
 })
 
 export class MessageListComponent implements OnInit, AfterViewInit {
-
   @Input('messages')
   messages!: Message[];
   @Input('sessionId') sessionId : any;

@@ -32,10 +32,10 @@
             </h4></mat-card-title>
             <span class="fx-spacer"></span>
             <!-- <span class="header-title">Language</span> -->
-            <span style="margin-top: 0.3ch;" class="header-title">{{selectedlang}}</span>
+            <span style="margin-top: 1.4ch;" class="header-title">{{languageSelected}}</span>
             &nbsp;
-            <mat-icon style="cursor:pointer;color:#DF5556"  *ngIf="voiceAssistState == true"(click)="onVoiceassistClick()">volume_down</mat-icon>
-            <mat-icon style="float:right;cursor:pointer;color:#DF5556"  *ngIf="voiceAssistState == false"(click)="onVoiceassistClick()">volume_off</mat-icon>
+            <mat-icon style="cursor:pointer;color:#DF5556;margin-top: 0.35ch;"  *ngIf="voiceAssistState == true"(click)="onVoiceassistClick()">volume_down</mat-icon>
+            <mat-icon style="float:right;cursor:pointer;color:#DF5556;margin-top: 0.35ch;"  *ngIf="voiceAssistState == false"(click)="onVoiceassistClick()">volume_off</mat-icon>
             <!-- <button  mat-button class="mat-close-button" (click)="dialogChatClose()"> -->
               <!-- <mat-icon mat-button [matMenuTriggerFor]="menu" style="color:white;margin: 1px 1px 0 0;cursor:pointer">more_vert</mat-icon>
               <mat-menu  #menu="matMenu">
@@ -62,12 +62,11 @@
             <div mat-card-avatar class="example-header-image"></div> 
             <!-- <mat-card-title>  -->
                <!-- <mat-toolbar  class="task-header">  -->
-      
-                  <span class="header-title">Federal Bank Executive</span>
-                 
+                  <span class="header-title-xs">FEDERAL BANK</span>
                   <!-- <span *ngIf="agentdetails != null" style="margin-top: 4ch;" class="header-title">{{agentdetails.agentname}}</span> -->
                <!-- </mat-toolbar>  -->
           <!-- </mat-card-title> -->
+          <p style="float:right;margin-left:0.2px;margin-top:0.9ch;">(Support Executive)</p>
           <span class="fx-spacer"></span>
           <!-- <span class="header-title">Language</span> -->
           <!-- <mat-icon style="float:right;cursor:pointer" *ngIf="voiceAssistState == false"(click)="onVoiceassistClick()">volume_off</mat-icon> -->

@@ -32,12 +32,15 @@ export class MessageFormComponent implements OnInit {
   @Input('deviceType') deviceType: any;
   @Input('voiceAssistState') voiceAssistState!: boolean;
   myTimeout: any;
+  richContent!: any[];
+  accordianText!: string;
   constructor(private fb: FormBuilder,
    private voiceRecognition: VoicerecognisionService,private chatbotService:ChatbotService) {
       this.searchForm = this.fb.group({
         searchText: ['', Validators.required],
       });
     }
+
     ngOnInit(): void {
       this.initVoiceInput();
       // this.voiceRecognition.setlanguage(this.langSelect);
@@ -136,6 +139,27 @@ export class MessageFormComponent implements OnInit {
       this.isFetching= true;
       let splitstrings: string[];
       this.chatbotService.sentAgentMessage(this.data).subscribe(responseData =>{
+        // console.log(this.richContent);
+        // this.richContent = responseData.body?.payload.richContent;
+        //  var designNames:any[] = this.richContent[0]
+        //  this.accordianText = designNames[0].text;
+       // var designNames = this.richContent.map(data => data['text']);
+        //this.richContent = myData;
+       // var designNames = myData.map(['text']);
+        // for(let i=0;i<this.richContent.length;i++){
+        //   var designNames = this.richContent.map(data => data['text']);
+        //   //var inner:any[]=this.richContent[i];
+        //   // for(let j =0;j<inner.length;j++){
+        //   //   this.accordianText = inner[j].text; 
+        //   // }
+        //   console.log("accordianText",designNames);
+        // }
+      //   for(let inner of this.richContent){
+      //     for(let accordian of inner){
+      //       this.accordianText = accordian.text;
+      //     }
+      //  }
+       //console.log("accordianText",this.accordianText);
         if(this.voiceAssistState === true ){
         if ('speechSynthesis' in window) {
           window.speechSynthesis.cancel();
@@ -144,6 +168,7 @@ export class MessageFormComponent implements OnInit {
          // voices = window.speechSynthesis.getVoices();
          // msg.text = responseData.body?.fullFillmentText;
           var toSpeak = responseData.body?.fullFillmentText;
+          console.log(responseData.body?.fullFillmentText);
           var msg = new SpeechSynthesisUtterance(toSpeak);
           msg.lang = this.langSelect;
            //var voices = window.speechSynthesis.getVoices();
@@ -162,29 +187,29 @@ export class MessageFormComponent implements OnInit {
            alert("Sorry, your browser doesn't support text to speech!");
          }
         }
-        if(responseData.body?.fullFillmentText===""){
-          if(this.langSelect=="en"){
-            let response = "Please enter recognisable input"
-            splitstrings = response.toString().split("\n");
-          }
+        // if(responseData.body?.fullFillmentText===""){
+        //   if(this.langSelect=="en"){
+        //     let response = "Please enter recognisable input"
+        //     splitstrings = response.toString().split("\n");
+        //   }
 
-          if(this.langSelect=="hi"){
-            let response = "कृपया पहचानने योग्य इनपुट दर्ज करें"
-            splitstrings = response.toString().split("\n");
-          }
+        //   if(this.langSelect=="hi"){
+        //     let response = "कृपया पहचानने योग्य इनपुट दर्ज करें"
+        //     splitstrings = response.toString().split("\n");
+        //   }
 
-          if(this.langSelect=="ml"){
-            let response = "ദയവായി തിരിച്ചറിയാവുന്ന ഇൻപുട്ട് നൽകുക"
-            splitstrings = response.toString().split("\n");
-          }
-        }
-        else{
-       splitstrings = responseData.body?.fullFillmentText.toString().split("\n");
-        }
+        //   if(this.langSelect=="ml"){
+        //     let response = "ദയവായി തിരിച്ചറിയാവുന്ന ഇൻപുട്ട് നൽകുക"
+        //     splitstrings = response.toString().split("\n");
+        //   }
+        // }
+      //   else{
+      //  splitstrings = responseData.body?.fullFillmentText.toString().split("\n");
+      //   }
   
         // console.log("Splitstrings:",splitstrings);
          this.messages.push(
-           new Message('bot',splitstrings,responseData.body?.options,'assets/bot.jpg')
+           new Message('bot',responseData.body?.fullFillmentText,responseData.body?.payload.richContent,'assets/bot.jpg')
         );
         console.log("ChatResponse..",responseData);
         this.isFetching= false;
@@ -202,7 +227,7 @@ export class MessageFormComponent implements OnInit {
     }
    // this.message.content = [textInput];
     console.log("SessionId",this.sessionId);
-    
+         
       console.log("hiiiiiiiiiiiiiiiiiii");
        this.data = {
         agent_id:'fba268e2-e8da-4493-b3cc-f0409aab03ab',
@@ -265,17 +290,17 @@ export class MessageFormComponent implements OnInit {
          alert("Sorry, your browser doesn't support text to speech!");
        }
       }
-      if(responseData.body?.fullFillmentText===""){
-      let response = "Please enter recognisable input"
-     splitstrings = response.toString().split("\n");
-      }
-      else{
-     splitstrings = responseData.body?.fullFillmentText.toString().split("\n");
-      }
+    //   if(responseData.body?.fullFillmentText===""){
+    //   let response = "Please enter recognisable input"
+    //  splitstrings = response.toString().split("\n");
+    //   }
+    //   else{
+    //  splitstrings = responseData.body?.fullFillmentText.toString().split("\n");
+    //   }
       // console.log("Splitstrings:",splitstrings);
-       this.messages.push(
-         new Message('bot',splitstrings,responseData.body?.options,'assets/bot.jpg')
-      );
+      this.messages.push(
+        new Message('bot',responseData.body?.fullFillmentText,responseData.body?.payload.richContent,'assets/bot.jpg')
+     );
       console.log("ChatResponse..",responseData);
       this.isFetching= false;
     });

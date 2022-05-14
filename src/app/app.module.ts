@@ -32,6 +32,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
 // import { CreateCustomerComponent } from './admin/pages/create-customer/create-customer.component';
 // import { LoginComponent } from './shared/login/login.component';
 // import { AdminSidenavComponent } from './shared/admin-sidenav/admin-sidenav.component';
@@ -105,6 +106,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatPaginatorModule,
     MatDialogModule,
     MatSelectModule,
+    CdkAccordionModule,
    // NgChartsModule
    MatCheckboxModule,
    MatKeyboardModule,

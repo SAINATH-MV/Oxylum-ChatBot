@@ -32,14 +32,23 @@ export class ChatbotComponent implements OnInit {
   @Input('deviceType') deviceType:any;
   //@Output() voiceassist: EventEmitter<boolean> = new EventEmitter<boolean>();
   voiceAssistState: boolean = true;
+  languageSelected:string = "";
 
   constructor(private voiceRecognition: VoicerecognisionService,
      private chatbotService:ChatbotService){
-   this.message = new Message('user',[], "",'src/assets/user.jpg');
+   this.message = new Message('user',[],"",'src/assets/user.jpg');
    let stringarray:string = "Hi I am Bot"
    if(this.selectedlang === "" ||'en'){
     this.messages = [
-      new Message('bot',['Hello, Please select a language'],['English','हिन्दी','മലയാളം'],'assets/bot.jpg')
+      new Message('bot',['Hello, Please select a language.'],
+      [
+        [{"options":[
+          {"text":'English'},{"text":'हिन्दी'},{"text":'മലയാളം'}
+        ],
+      "type":"chips"}
+      ]
+    ]    
+        ,'assets/bot.jpg')
     ];   
    }
   //  if(this.selectedlang === 'hi'){
@@ -93,10 +102,17 @@ export class ChatbotComponent implements OnInit {
     // this.agentchatSub.unsubscribe();
    }
 
-
   setCurrentLang(currentlang:string){
     this.selectedlang = currentlang;
     this.voiceRecognition.setlanguage(this.selectedlang);
+    if(this.selectedlang=='ml')
+    this.languageSelected='മലയാളം'
+    
+    else if(this.selectedlang=='hi')
+    this.languageSelected="हिन्दी"
+
+     else
+    this.languageSelected="English"
   }
 
   recodringStarted(isrecording:boolean){

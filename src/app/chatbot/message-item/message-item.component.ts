@@ -1,6 +1,5 @@
 import { Component, Input, OnInit,EventEmitter, Output } from '@angular/core';
 import { Message } from  'src/app/chatbot/message';
-
 import { ChatbotService } from '../chatbot-service';
 
 @Component({
@@ -24,10 +23,13 @@ export class MessageItemComponent implements OnInit {
   @Input('deviceType') deviceType: any;
   myTimeout: any;
   @Input('voiceAssistState') voiceAssistState!: boolean;
+  accordianText!: string[];
+  chipsetSelect: boolean = false;
 
   constructor(private chatbotService:ChatbotService) {}
 
   ngOnInit(): void {
+
   }
 
   myTimer(){
@@ -40,9 +42,12 @@ export class MessageItemComponent implements OnInit {
   //   this.voiceAssistState = !this.voiceAssistState;
   //   this.voiceassist.emit(this.voiceAssistState);
   // }
+  onclikAccordian(accordiantext:string){
+     this.accordianText = accordiantext.split('<br><br>');
+  }
 
   onChipsetClick(selectedChip:any){
-    
+    this.chipsetSelect = true;
       if(selectedChip === 'മലയാളം')
              this.chiplang.emit('ml');
 
@@ -89,10 +94,10 @@ export class MessageItemComponent implements OnInit {
        }
       }
      // console.log("responseData.body?.fullFillmentText",responseData.body?.fullFillmentText)
-      let splitstrings = responseData.body?.fullFillmentText.toString().split("\n");
-      console.log("Splitstrings:",splitstrings);
+     // let splitstrings = responseData.body?.fullFillmentText.toString().split("\n");
+     // console.log("Splitstrings:",splitstrings);
       this.messages.push(
-        new Message('bot',splitstrings,responseData.body?.options,'assets/bot.jpg')
+        new Message('bot',responseData.body?.fullFillmentText,responseData.body?.richContent,'assets/bot.jpg')
      );
     // console.log("ChatResponse..",responseData);
     // this.isFetching= false;

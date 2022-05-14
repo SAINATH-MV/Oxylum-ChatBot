@@ -13,7 +13,7 @@ export class ChatbotService {
     //     "Accept": '*/*'
     // });
        return this.http
-           .post<any>('https://test.bicaneer.in/voice/webhooks/chatbot',data,
+           .post<any>('https://testdev.bicaneer.in/voice/webhooks/chatbot',data,
            { observe: 'response' })
            .pipe(
             map((responseData)=>{

@@ -2,8 +2,53 @@
   <div *ngIf="message.type=='bot'&& deviceType != 'xs'" class="bot-message-item">
     <div mat-card-avatar class="bot-header-item"></div>
     <div>
-      <mat-card *ngIf="message.content" class="bot-item-matcard p-left " style="--h:8px">
-        <div  *ngFor="let messages of message.content " class="message">
+      <ng-container  *ngFor="let option of message.richcontent">
+        <ng-container  *ngFor="let inneroption of option">
+          <div style="margin-bottom: 1ch;" *ngIf="inneroption.type == 'accordion'">
+             <!-- <mat-card> -->
+            <cdk-accordion class="example-accordion">
+              <cdk-accordion-item
+                #accordionItem="cdkAccordionItem"
+                class="example-accordion-item"
+                role="button"
+                tabindex="0"
+                [attr.aria-expanded]="accordionItem.expanded"
+              >
+              <mat-card>
+                <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                  <p><b>{{inneroption.title}}</b><p>
+                  <span (click)="onclikAccordian(inneroption.text)" class="example-accordion-item-description">
+                    Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                  </span>
+                </div>
+                <div
+                  class="example-accordion-item-body"
+                  role="region"
+                  [style.display]="accordionItem.expanded ? '' : 'none'"
+                >
+                  <p>{{inneroption.subtitle}}</p>
+                  <p *ngFor="let text of accordianText"><b>{{text}}</b></p>
+                </div>
+                </mat-card>
+              </cdk-accordion-item>
+            </cdk-accordion>
+            <!-- </mat-card> -->
+          </div>
+          <div style="margin-bottom: 1ch;" *ngIf="inneroption.type == 'info'">
+            <mat-card>
+              <p><b>{{inneroption.title}}</b><p>
+                <p>{{inneroption.subtitle}}</p>
+            </mat-card>
+          </div>
+            <mat-card *ngIf="inneroption.type == 'list'">
+              <p><b>{{inneroption.title}}</b></p>
+               <p>{{inneroption.subtitle}}</p>
+            </mat-card>
+            <br *ngIf="inneroption.type == 'divider'">
+        </ng-container>
+      </ng-container>
+      <mat-card *ngIf="message.content.length!= 0" class="bot-item-matcard p-left " style="--h:8px">
+        <div  *ngFor="let messages of message.content" class="message">
           {{ messages }}
         <!-- <mat-icon style="float:right;cursor:pointer" *ngIf="voiceAssistState == true" (click)="onVoiceassistClick()">volume_down</mat-icon>
         <mat-icon style="float:right;cursor:pointer" *ngIf="voiceAssistState == false"(click)="onVoiceassistClick()">volume_off</mat-icon> -->
@@ -15,38 +60,85 @@
           >
         </div> -->
       </mat-card>
-      <mat-chip-list>
-        <!-- <div *ngIf="langSelected" style="margin-left: 2ch;">
+      <ng-container  *ngFor="let option of message.richcontent">
+        <ng-container  *ngFor="let inneroption of option">
+         <mat-chip-list *ngIf="inneroption.type == 'chips'">
+        <div *ngIf="chipsetSelect" style="margin-left: 2ch;">
           <mat-chip
                class="chipset-item"  
                style="background-color: #e7e5e5; color:#ffffff"    
-              *ngFor="let chipset of message.chipset"
-              [selected]="chipset"
-              [value]="chipset"
+              *ngFor="let chipset of inneroption.options"
              >
-            {{chipset}}
+            {{chipset.text}}
           </mat-chip>
-          </div> -->
-          <div *ngIf="!langSelected" style="margin-left: 2ch;">
+          </div>
+          <div *ngIf="!chipsetSelect" style="margin-left: 2ch;">
             <mat-chip
                  class="chipset-item"  
                  style="background-color: #F9E1E1; color:black"    
-                *ngFor="let chipset of message.chipset"
+                 *ngFor="let chipset of inneroption.options"
                 [selected]="chipset"
                 [value]="chipset"
-                (click) = "onChipsetClick(chipset)"
+                (click) = "onChipsetClick(chipset.text)"
                >
-              {{chipset}}
+              {{chipset.text}}
             </mat-chip>
             </div>
         </mat-chip-list>
+      </ng-container>
+    </ng-container>
         <br>
     </div>
   </div>
   <div *ngIf="message.type=='bot'&& deviceType == 'xs'" class="bot-message-item-xs">
-    <div mat-card-avatar class="bot-header-item"></div>
+    <div mat-card-avatar class="bot-header-item-xs"></div>
     <div style="width:300px;">
-      <mat-card *ngIf="message.content" class="bot-item-matcard p-left" style="--h:8px" >
+      <ng-container  *ngFor="let option of message.richcontent">
+        <ng-container  *ngFor="let inneroption of option">
+          <div style="margin-bottom: 1ch;" *ngIf="inneroption.type == 'accordion'">
+             <!-- <mat-card> -->
+            <cdk-accordion class="example-accordion">
+              <cdk-accordion-item
+                #accordionItem="cdkAccordionItem"
+                class="example-accordion-item"
+                role="button"
+                tabindex="0"
+                [attr.aria-expanded]="accordionItem.expanded"
+              >
+              <mat-card>
+                <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
+                  <p><b>{{inneroption.title}}</b><p>
+                    <p>{{inneroption.subtitle}}</p>
+                  <span class="example-accordion-item-description">
+                    Click to {{ accordionItem.expanded ? 'close' : 'open' }}
+                  </span>
+                </div>
+                <div
+                  class="example-accordion-item-body"
+                  role="region"
+                  [style.display]="accordionItem.expanded ? '' : 'none'"
+                >
+                  <p *ngFor="let text of accordianText"><b>{{text}}</b></p>
+                </div>
+                </mat-card>
+              </cdk-accordion-item>
+            </cdk-accordion>
+            <!-- </mat-card> -->
+          </div>
+          <div style="margin-bottom: 1ch;" *ngIf="inneroption.type == 'info'">
+            <mat-card>
+              <p><b>{{inneroption.title}}</b><p>
+                <p>{{inneroption.subtitle}}</p>
+            </mat-card>
+          </div>
+          <mat-card *ngIf="inneroption.type == 'list'">
+            <p><b>{{inneroption.title}}</b></p>
+             <p>{{inneroption.subtitle}}</p>
+          </mat-card>
+          <br *ngIf="inneroption.type == 'divider'">
+        </ng-container>
+      </ng-container>
+      <mat-card *ngIf="message.content.length!= 0" class="bot-item-matcard p-left" style="--h:8px" >
         <div  *ngFor="let messages of message.content " class="message-xs">
           {{ messages }}
         </div>
@@ -57,12 +149,40 @@
           >
         </div> -->
       </mat-card>
-      <mat-chip-list>
+      <ng-container  *ngFor="let option of message.richcontent">
+        <ng-container  *ngFor="let inneroption of option">
+      <mat-chip-list *ngIf="inneroption.type == 'chips'">
+        <!-- <div *ngIf="langSelected" style="margin-left: 2ch;">
+          <mat-chip
+               class="chipset-item"  
+               style="background-color: #e7e5e5; color:#ffffff"    
+              *ngFor="let chipset of inneroption.options"
+             >
+            {{chipset.text}}
+          </mat-chip>
+          </div> -->
+          <div style="margin-left: 2ch;">
+            <mat-chip
+                 class="chipset-item"  
+                 style="background-color: #F9E1E1; color:black"    
+                 *ngFor="let chipset of inneroption.options"
+                [selected]="chipset"
+                [value]="chipset"
+                (click) = "onChipsetClick(chipset.text)"
+               >
+              {{chipset.text}}
+            </mat-chip>
+            </div>
+        </mat-chip-list>
+      </ng-container>
+    </ng-container>
+     
+      <!-- <mat-chip-list>
         <div style="margin-left: 2ch;">
           <mat-chip
-          class="chipset-item" 
+            class="chipset-item" 
               style="margin-right:1ch;"
-              *ngFor="let chipset of message.chipset"
+              *ngFor="let chipset of message.richcontent"
               [selected]="chipset"
               [value]="chipset"
               (click) = "onChipsetClick(chipset)"
@@ -73,6 +193,7 @@
           </mat-chip>
           </div>
         </mat-chip-list>
+         -->
         <br>
     </div>
   </div>
