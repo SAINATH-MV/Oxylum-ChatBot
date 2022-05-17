@@ -15,7 +15,7 @@ export class MessageItemComponent implements OnInit {
   @Input('sessionId')
   sessionId:any;
   @Input('langSelected')
-  langSelected!: string;
+  langSelected!: string 
   data:any;
   isRecording!: boolean;
   @Output() chiplang: EventEmitter<string> = new EventEmitter<string>();
@@ -46,6 +46,17 @@ export class MessageItemComponent implements OnInit {
      this.accordianText = accordiantext.split('<br><br>');
   }
 
+  onChipsetClickDisabled(chipset:string){
+    if(chipset =="English"){
+      location.reload();
+    }
+    if(chipset =="हिन्दी"){
+      location.reload();
+    }
+    if(chipset =="മലയാളം"){
+      location.reload();
+    }
+  }
   onChipsetClick(selectedChip:any){
     this.chipsetSelect = true;
       if(selectedChip === 'മലയാളം')

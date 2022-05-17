@@ -24,18 +24,19 @@
           <mat-option   *ngFor="let lang of agentdetails.agentlang" [value]=lang.language_code><p *ngIf="lang.language == 'Malayalam'">മലയാളം</p></mat-option> -->
         <!-- </mat-select>
       </mat-form-field> --> 
-     <button *ngIf="!isUserSpeaking" (mousedown)="startRecording()" class="btn-record"><mat-icon   style=" cursor:pointer;color:black">mic</mat-icon></button>
-      <button style="background-color:#DF5556" *ngIf="isUserSpeaking" (mouseup)="sendVoiceMessage()" class="btn-record" (mouseleave) ="deleteRecording()"><mat-icon style=" cursor:pointer;color:white">mic</mat-icon></button> 
+     <button *ngIf="!isUserSpeaking" (mousedown)="startRecording()" class="btn-record"><mat-icon style=" cursor:pointer;color:black">mic</mat-icon></button>
+     <button style="background-color:#DF5556" *ngIf="isUserSpeaking" (mouseup)="sendVoiceMessage()" class="btn-record" (mouseleave) ="deleteRecording()"><mat-icon style=" cursor:pointer;color:white">mic</mat-icon></button> 
       <!-- <span><mat-icon (click)="textinput.click()" style=" cursor:pointer;color:#4D4DCB">mic</mat-icon></span> -->
     <!-- <button *ngIf="!isUserSpeaking && !textinput.value" mat-button class="btn-success" (click)="startRecording()" ><mat-icon style="color:white">mic</mat-icon></button> -->
     <!-- <button *ngIf="!textinput.value" mat-button class="btn-success" (click)="startRecording()" ><mat-icon style="color:white">mic</mat-icon></button> -->
       <!-- <button *ngIf="isUserSpeaking && !textinput.value"   mat-button class="btn-success" (click)="stopRecording()" ><mat-icon style="color:white">stop</mat-icon></button> -->
-      <button *ngIf="message.content &&!isUserSpeaking "  mat-button class="btn-success"  (click)="sendMessage()"><mat-icon style="color:white">send</mat-icon></button>
-      <button [disabled]="true"  *ngIf="!message.content || isUserSpeaking " mat-button class="btn-success"  ><mat-icon style="color:white">send</mat-icon></button>
+      <button *ngIf="message.content &&!isUserSpeaking "   class="btn-success"  (click)="sendMessage()"><mat-icon style="color:white">send</mat-icon></button>
+      <button [disabled]="true"  *ngIf="!message.content || isUserSpeaking "  class="btn-success"  ><mat-icon style="color:white">send</mat-icon></button>
       <!-- <button   mat-button class="btn-success"  (click)="sendMessage()"><mat-icon style="color:white">send</mat-icon></button> -->
     </div>
   </div>
-  <p *ngIf="" class="logo-label"><i>Powered by</i><b> Oxylym</b></p>
+  <p *ngIf="deviceType !=  'xs'" class="logo-label"><i>Powered by</i><b style="color:#DF5556"> Oxylym</b></p>
+  <p *ngIf="deviceType ==  'xs'" class="logo-label-xs"><i>Powered by</i><b style="color:#DF5556"> Oxylym</b></p>
   </mat-card>
 
 

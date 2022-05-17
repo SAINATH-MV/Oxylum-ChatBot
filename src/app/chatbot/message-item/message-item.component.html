@@ -1,6 +1,7 @@
 <li class="list-group-item">
   <div *ngIf="message.type=='bot'&& deviceType != 'xs'" class="bot-message-item">
     <div mat-card-avatar class="bot-header-item"></div>
+    <!-- <img mat-card-image class="bot-header-item" src="/assets/Oxylym_logo - Copy.png" alt="cover-pic"> -->
     <div>
       <ng-container  *ngFor="let option of message.richcontent">
         <ng-container  *ngFor="let inneroption of option">
@@ -16,7 +17,7 @@
               >
               <mat-card>
                 <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
-                  <p><b>{{inneroption.title}}</b><p>
+                  <p><b>Transactions related to your query</b><p>
                   <span (click)="onclikAccordian(inneroption.text)" class="example-accordion-item-description">
                     Click to {{ accordionItem.expanded ? 'close' : 'open' }}
                   </span>
@@ -26,7 +27,7 @@
                   role="region"
                   [style.display]="accordionItem.expanded ? '' : 'none'"
                 >
-                  <p>{{inneroption.subtitle}}</p>
+                  <p><b>{{inneroption.title}}</b><p>
                   <p *ngFor="let text of accordianText"><b>{{text}}</b></p>
                 </div>
                 </mat-card>
@@ -68,6 +69,7 @@
                class="chipset-item"  
                style="background-color: #e7e5e5; color:#ffffff"    
               *ngFor="let chipset of inneroption.options"
+              (click) = "onChipsetClickDisabled(chipset.text)"
              >
             {{chipset.text}}
           </mat-chip>
@@ -107,8 +109,7 @@
               >
               <mat-card>
                 <div class="example-accordion-item-header" (click)="accordionItem.toggle()">
-                  <p><b>{{inneroption.title}}</b><p>
-                    <p>{{inneroption.subtitle}}</p>
+                  <p><b>Transactions related to your query</b><p>
                   <span class="example-accordion-item-description">
                     Click to {{ accordionItem.expanded ? 'close' : 'open' }}
                   </span>
@@ -118,6 +119,7 @@
                   role="region"
                   [style.display]="accordionItem.expanded ? '' : 'none'"
                 >
+                <p><b>{{inneroption.title}}</b><p>
                   <p *ngFor="let text of accordianText"><b>{{text}}</b></p>
                 </div>
                 </mat-card>
@@ -138,8 +140,8 @@
           <br *ngIf="inneroption.type == 'divider'">
         </ng-container>
       </ng-container>
-      <mat-card *ngIf="message.content.length!= 0" class="bot-item-matcard p-left" style="--h:8px" >
-        <div  *ngFor="let messages of message.content " class="message-xs">
+      <mat-card *ngIf="message.content.length!= 0" class="bot-item-matcard-xs p-left" style="--h:8px" >
+        <div *ngFor="let messages of message.content " class="message-xs">
           {{ messages }}
         </div>
         <!-- <div class="timeform">
@@ -161,7 +163,7 @@
             {{chipset.text}}
           </mat-chip>
           </div> -->
-          <div style="margin-left: 2ch;">
+          <div style="margin-left: 1ch;">
             <mat-chip
                  class="chipset-item"  
                  style="background-color: #F9E1E1; color:black"    

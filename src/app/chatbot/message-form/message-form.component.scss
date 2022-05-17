@@ -16,11 +16,11 @@
     }
   }
 
-  .input-item{
-    //border-radius: 25px;
-    //border: 2px solid #609;
-    //padding: 20px; 
-  }
+  // .input-item{
+  //   //border-radius: 25px;
+  //   //border: 2px solid #609;
+  //   //padding: 20px; 
+  // }
 
   .form-item{
     display:flex;
@@ -40,11 +40,14 @@
     margin-right:5px;
     display:block;
     height: 50px;
+
     width: 50px;
-    border-radius:50%;
+    border-radius:60%;
     filter:  /* the more shadow you add the thicker the border will be */
     drop-shadow(0px 0px 1px #4D4DCB)
-    drop-shadow(0px 0px 1px #4D4DCB)
+    drop-shadow(0px 0px 1px #4D4DCB);
+    border:none;
+    cursor:pointer;
   //  margin-left: 1ch;
    // border: 1px solid #4D4DCB;
   }
@@ -71,6 +74,14 @@
     font-weight:1;
     color:#b8b8b8;
     margin-left: 27ch;
+}
+
+.logo-label-xs{
+  font-size:smaller;
+  // font-style: italic;
+  font-weight:1;
+  color:#b8b8b8;
+  margin-left: 17ch;
 }
 
 .total-form-mat{

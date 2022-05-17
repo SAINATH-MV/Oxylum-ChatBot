@@ -1,34 +1,34 @@
 .message {
-    font-size: 1em;
-    font-style: bolder;
-    font-weight: 500;
+    font-size: 1.1em;
+    font-style: normal;
+   // font-weight: 500;
     color:white;
     inline-size: 300px;
     overflow-wrap: break-word;
   }
   .message-xs {
-    font-size: 1em;
-    font-style: bolder;
-    font-weight: 500;
+    font-size: 1.1em;
+    font-style: normal;
+    //font-weight: 500;
     color:white;
     inline-size: 200px;
     overflow-wrap: break-word;
   }
 
   .user-message{
-    font-size: 1em;
+    font-size: 1.1em;
     font-style:normal;
-    font-weight: 10;
-    color:white;
+    font-weight:500;
+    color:black;
     inline-size: 300px;
     overflow-wrap: break-word;
   }
 
   .user-message-xs{
-    font-size: 1em;
+    font-size: 1.1em;
     font-style:normal;
-    font-weight: 100;
-    color:white;
+    font-weight: 500;
+    color:Black;
     inline-size: 250px;
     overflow-wrap: break-word;
   }
@@ -109,6 +109,57 @@
   .bot-item-matcard.bottom::before {
     bottom:var(--p,20px);
   }
+
+  .bot-item-matcard-xs{
+    max-width: 400px;
+    //max-height: 500px;
+    margin-bottom: 10px;
+    background-color:#DF5556;
+    margin-right:50px;
+    margin-left:4px;
+    position: relative;
+    // background: linear-gradient(168deg, #4D4DCB 80%,  #4D4DCB 80%,  #4D4DCB 80%, 
+    // transparent 95%);
+    border: 55px solid #000;
+    border-radius: 10px !important;
+    border: #000 !important;
+     filter:  /* the more shadow you add the thicker the border will be */
+   drop-shadow(0px 0px 1px #DF5556) 
+  // drop-shadow(0px 0px 1px #DF5556) 
+  // drop-shadow(0px 0px 1px #DF5556) 
+  // drop-shadow(0px 0px 1px #DF5556) 
+  // drop-shadow(0px 0px 1px #DF5556) 
+  // drop-shadow(0px 0px 1px #DF5556)
+}
+
+.bot-item-matcard-xs::before{
+  content: "";
+  position: absolute;
+  height: var(--h,20px);
+  width: var(--w,10px);
+  background: #DF5556;
+  transform:scale(var(--x,1),var(--y,1));
+}
+.bot-item-matcard-xs.p-left::before{
+  right: 100%;
+  clip-path: polygon(100% 0, 100% 100%,0% 50%);
+}
+.bot-item-matcard-xs.p-left.alt::before{
+  clip-path: polygon(100% 0, 100% 100%,0% 100%);
+}
+.bot-item-matcard-xs.right::before{
+  right:var(--p,20px);
+}
+.bot-item-matcard-xs.left::before {
+  left:var(--p,20px);
+}
+.bot-item-matcard-xs.top::before{
+  top:var(--p,20px);
+}
+.bot-item-matcard-xs.bottom::before {
+  bottom:var(--p,20px);
+}
+
   .bot-message-item{
     max-width: 400px;
       display: flex;
@@ -116,7 +167,7 @@
   }
 
   .bot-message-item-xs{
-      max-width: 325px;
+      max-width: 500px;
       display: flex;
       flex-direction: row;  
   }
@@ -125,12 +176,17 @@
     background-image: url("/assets/Oxylym_logo.png");
     background-size: cover; 
     margin-right: 1ch;
+    // border: 55px solid #000;
+    // border-radius: 10px !important;
+    // border: #000 !important;
+    //  filter:
+    //  drop-shadow(0px 0px 1px #DF5556) 
   }
 
   .bot-header-item-xs{
     background-image: url("/assets/Oxylym_logo - Copy.png");
     background-size: 5.5ch; 
-    margin-right: 1ch;
+    margin-right: 1ch;  
   }
   
   .user-header-item{
@@ -155,11 +211,11 @@
     
   //  width:auto;
   }
-  .user-message{
-  color:black;
- // font-size: medium;
-  font-weight:bold;
-  }
+//   .user-message{
+//   color:black;
+//  // font-size: medium;
+//   font-weight:bold;
+//   }
 
 .user-item-matcard{
  max-width:800px;
@@ -214,7 +270,7 @@
 }
 
 .user-item-matcard-xs{
-  max-width:800px;
+  max-width:210px;
      //max-height: 500px;
      margin-bottom: 10px;
      margin-right:1ch;
