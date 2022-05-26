@@ -33,6 +33,7 @@ export class ChatbotComponent implements OnInit {
   //@Output() voiceassist: EventEmitter<boolean> = new EventEmitter<boolean>();
   voiceAssistState: boolean = true;
   languageSelected:string = "";
+  panelOpenState = true;
 
   constructor(private voiceRecognition: VoicerecognisionService,
      private chatbotService:ChatbotService){
@@ -43,7 +44,7 @@ export class ChatbotComponent implements OnInit {
       new Message('bot',['Hello, Please select a language.'],
       [
         [{"options":[
-          {"text":'English'},{"text":'हिन्दी'},{"text":'മലയാളം'}
+          {"text":'English'},{"text":'हिन्दी'},{"text":'മലയാളം'},{"text":'ಕನ್ನಡ'}
         ],
       "type":"chips"}
       ]
@@ -110,6 +111,9 @@ export class ChatbotComponent implements OnInit {
     
     else if(this.selectedlang=='hi')
     this.languageSelected="हिन्दी"
+
+    else if(this.selectedlang=='kn')
+    this.languageSelected="ಕನ್ನಡ"
 
      else
     this.languageSelected="English"

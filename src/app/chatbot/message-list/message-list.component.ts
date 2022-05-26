@@ -24,6 +24,7 @@ export class MessageListComponent implements OnInit, AfterViewInit {
   @Output() chiplang: EventEmitter<string> = new EventEmitter<string>();
   @Input('deviceType') deviceType: any;
   @Input('voiceAssistState')voiceAssistState!: boolean;
+  panelOpenState = true;
   
   constructor() { }
 
@@ -49,8 +50,8 @@ export class MessageListComponent implements OnInit, AfterViewInit {
       }
     
   setVoiceAssist(currentstate:boolean){
-    
-  }
+
+    }
   ngOnInit(): void {
   }
 

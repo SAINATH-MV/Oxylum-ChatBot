@@ -33,6 +33,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {CdkAccordionModule} from '@angular/cdk/accordion';
+import {MatExpansionModule} from '@angular/material/expansion';
 // import { CreateCustomerComponent } from './admin/pages/create-customer/create-customer.component';
 // import { LoginComponent } from './shared/login/login.component';
 // import { AdminSidenavComponent } from './shared/admin-sidenav/admin-sidenav.component';
@@ -72,12 +73,9 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
 // import { AgentChatComponent } from './admin/pages/agent-chat/agent-chat.component';
 // import {MatMenuModule} from '@angular/material/menu';
  import { MatKeyboardModule } from 'angular-onscreen-material-keyboard';
- import { FlexLayoutModule } from  '@angular/flex-layout';
+import { FlexLayoutModule } from  '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import {MatGridListModule} from '@angular/material/grid-list';
-
-
-
 
 @NgModule({
   declarations: [
@@ -106,6 +104,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatPaginatorModule,
     MatDialogModule,
     MatSelectModule,
+    MatExpansionModule,
     CdkAccordionModule,
    // NgChartsModule
    MatCheckboxModule,

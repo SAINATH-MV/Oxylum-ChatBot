@@ -56,6 +56,9 @@ export class MessageItemComponent implements OnInit {
     if(chipset =="മലയാളം"){
       location.reload();
     }
+    if(chipset =='ಕನ್ನಡ'){
+      location.reload();
+    }
   }
   onChipsetClick(selectedChip:any){
     this.chipsetSelect = true;
@@ -65,6 +68,9 @@ export class MessageItemComponent implements OnInit {
      else if(selectedChip === 'हिन्दी')
               this.chiplang.emit('hi');
       
+      else if(selectedChip === 'ಕನ್ನಡ')
+              this.chiplang.emit('kn');
+
       else if(selectedChip === 'English')
               this.chiplang.emit('en');
       

@@ -167,8 +167,8 @@ export class MessageFormComponent implements OnInit {
          // var msg = new SpeechSynthesisUtterance();
          // voices = window.speechSynthesis.getVoices();
          // msg.text = responseData.body?.fullFillmentText;
-          var toSpeak = responseData.body?.fullFillmentText;
-          console.log(responseData.body?.fullFillmentText);
+          var toSpeak = responseData.body?.voice_msg;
+          console.log(responseData.body?.voice_msg);
           var msg = new SpeechSynthesisUtterance(toSpeak);
           msg.lang = this.langSelect;
            //var voices = window.speechSynthesis.getVoices();
@@ -263,7 +263,7 @@ export class MessageFormComponent implements OnInit {
         this.myTimeout = setTimeout(this.myTimer, 10000);
         //var msg = new SpeechSynthesisUtterance();
        // msg.text = responseData.body?.fullFillmentText;
-       var toSpeak = responseData.body?.fullFillmentText;
+       var toSpeak = responseData.body?.voice_msg;
        var msg = new SpeechSynthesisUtterance(toSpeak);
         msg.lang = this.langSelect;
         var voices = window.speechSynthesis.getVoices();

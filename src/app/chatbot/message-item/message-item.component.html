@@ -163,7 +163,19 @@
             {{chipset.text}}
           </mat-chip>
           </div> -->
-          <div style="margin-left: 1ch;">
+          <div *ngIf="chipsetSelect" style="margin-left: 1ch;">
+            <mat-chip
+                 class="chipset-item"  
+                 style="background-color: #e7e5e5; color:#ffffff"    
+                 *ngFor="let chipset of inneroption.options"
+                [selected]="chipset"
+                [value]="chipset"
+                (click) = "onChipsetClickDisabled(chipset.text)"
+               >
+              {{chipset.text}}
+            </mat-chip>
+            </div>
+          <div *ngIf="!chipsetSelect" style="margin-left: 1ch;">
             <mat-chip
                  class="chipset-item"  
                  style="background-color: #F9E1E1; color:black"    
