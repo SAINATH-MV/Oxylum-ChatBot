@@ -78,7 +78,7 @@ export class MessageItemComponent implements OnInit {
       console.log("Selected Chips:",selectedChip);
       console.log("Language Selected:",this.langSelected);
       this.data = {
-       agent_id:'f1d514f2-c895-4964-b3b1-bc601be2cf28',
+       agent_id:'fba268e2-e8da-4493-b3cc-f0409aab03ab',
        session_id:this.sessionId,
        text:selectedChip,
        env_id:"-",
@@ -92,8 +92,11 @@ export class MessageItemComponent implements OnInit {
         this.myTimeout = setTimeout(this.myTimer, 10000);
         // var msg = new SpeechSynthesisUtterance();
         // msg.text = responseData.body?.fullFillmentText;
-        var toSpeak = responseData.body?.fullFillmentText;
-        var msg = new SpeechSynthesisUtterance(toSpeak);
+        var toSpeak = responseData.body?.voice_msg;
+          console.log("toSpeak",responseData.body?.voice_msg);
+          var msg = new SpeechSynthesisUtterance(toSpeak);
+        // var toSpeak = responseData.body?.fullFillmentText;
+        // var msg = new SpeechSynthesisUtterance(toSpeak);
         msg.lang = this.langSelected;
         // var voices = window.speechSynthesis.getVoices();
         // msg.voice = voices[10]; 
@@ -114,7 +117,7 @@ export class MessageItemComponent implements OnInit {
      // let splitstrings = responseData.body?.fullFillmentText.toString().split("\n");
      // console.log("Splitstrings:",splitstrings);
       this.messages.push(
-        new Message('bot',responseData.body?.fullFillmentText,responseData.body?.richContent,'assets/bot.jpg')
+        new Message('bot',responseData.body?.fullFillmentText,responseData.body?.payload.richContent,'assets/bot.jpg')
      );
     // console.log("ChatResponse..",responseData);
     // this.isFetching= false;

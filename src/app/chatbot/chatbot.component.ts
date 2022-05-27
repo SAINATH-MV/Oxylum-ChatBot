@@ -125,7 +125,7 @@ export class ChatbotComponent implements OnInit {
 
   dialogChatClose(){
       this.messagedata = {
-       agent_id:"f1d514f2-c895-4964-b3b1-bc601be2cf28",
+       agent_id:"fba268e2-e8da-4493-b3cc-f0409aab03ab",
        session_id:this.sessionId,
        text: this.message.content,
        env_id:"-",
